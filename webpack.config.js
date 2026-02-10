@@ -15,7 +15,7 @@ module.exports = {
         directory: path.resolve(__dirname, 'dist'),
     },
     open: true,
-    port: 3000,
+    port: 8080,
     hot: true,
     watchFiles: ["./src/template.html"],
   },

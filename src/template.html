@@ -8,7 +8,7 @@
 <body>
     <main>
         <section id="lander">
-            <img id="logo" alt="The Three Colours Trilogy by Krzysztof Kieślowski">
+            <img class="logo" alt="The Three Colours Trilogy by Krzysztof Kieślowski">
 
             <div id="lander-slider">
                 <div id="slider-track">
@@ -20,7 +20,43 @@
         </section>
 
         <section id="details">
-            <button type="button" id="select">Select Movie</button>
+            <div id="button-container"><button type="button" id="select">Select Movie</button></div>
+
+            <div id="details-content">
+                <div id="about-movie">
+                    <div id="movie-title">
+                        <img class="logo" alt="The Three Colours Trilogy by Krzysztof Kieślowski">
+                        <h1>Blue</h1>
+                    </div>
+                    
+                    <div id="plot">
+                        <p></p>
+                    </div>
+                </div>
+
+                <div id="movie-cast">
+                    <div id="cast-img-container">
+                        <img class="cast-img" id="cast-1">
+                        <img class="cast-img" id="cast-2">
+                        <img class="cast-img" id="cast-3">
+                    </div>
+
+                    <ul id="cast">
+                        <li id="li-1" class="selected">
+                            <a class="actor-name" id="actor-1"></a>
+                            <span class="character-name" id="character-1"></span>
+                        </li>
+                        <li id="li-2">
+                            <a class="actor-name" id="actor-2"></a>
+                            <span class="character-name" id="character-2"></span>
+                        </li>
+                        <li id="li-3">
+                            <a class="actor-name" id="actor-3"></a>
+                            <span class="character-name" id="character-3"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </section>
 
         <section id="review"></section>
