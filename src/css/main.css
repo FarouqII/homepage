@@ -173,6 +173,40 @@ section {
     border-radius: 15px; */
 }
 
+#rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: -4vh;
+    text-decoration: none;
+    color: inherit;
+}
+
+#rating:hover #letterboxd {
+    opacity: 1;
+    transform: translateY(-275%);
+}
+
+#rating:hover #stars {
+    background-color: var(--color-dark);
+}
+
+#letterboxd {
+    position: absolute;
+    z-index: 0;
+    opacity: 0;
+    width: 3.25rem;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+#stars {
+    font-size: 2.5rem;
+    transition: background-color 0.3s ease-in-out;
+    padding: 0.5vw 0.75vw 0.8vw 0.75vw;
+    border-radius: 4vw;
+}
+
 #movie-cast {
     display: flex;
     flex-direction: column;

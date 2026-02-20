@@ -13,11 +13,16 @@ import valentineImg from './assets/red/cast/valentine.jpg';
 import judgeImg from './assets/red/cast/judge.jpg';
 import augusteImg from './assets/red/cast/auguste.jpg';
 
+//Images - Letterboxd
+import letterboxdBLUE from './assets/letterboxd-blue.png';
+import letterboxdWHITE from './assets/letterboxd-white.png';
+import letterboxdRED from './assets/letterboxd-red.png';
+
 export const TITLES = ["Blue", "White", "Red"];
 export const BGcolors = ["#1e2f4c", "#cdcac8", "#5e3120"];
 export const FONTcolors = ["#395c97", "#686665", "#914a31" ];
 export const LIGHTcolors = ["#86a5db", "#252524", "#d3a391" ];
-export const DARKcolors = ["#0f1a2ca2", "#cecdcd", "#2e1810"];
+export const DARKcolors = ["#0f1a2ca2", "#bdbdbd", "#2e1810"];
 export const SYNOPSIS = [
     "Julie is haunted by her grief after living through a tragic auto wreck that claimed the life of her composer husband and young daughter. Her initial reaction is to withdraw from her relationships, lock herself in her apartment and suppress her pain. But avoiding human interactions on the bustling streets of Paris proves impossible, and she eventually meets up with Olivier, an old friend who harbors a secret love for her, and who could draw her back to reality.",
     "Polish immigrant Karol Karol finds himself out of a marriage, a job and a country when his French wife, Dominique, divorces him after six months due to his impotence. Forced to leave the France after losing the business they jointly owned, Karol enlists fellow Polish expatriate Mikolah to smuggle him back to their homeland. After successfully returning, Karol begins to build his new life, while never forgetting his old one.",
@@ -30,7 +35,7 @@ export const CASTimg = [
 ];
 export const CASTnames = [
     ["Juliette Binoche", "Benoît Régent", "Florence Pernel"],           // BLUE
-    ["Z. Zamachowski", "Julie Delpy", "Janusz Gajos"],            // WHITE
+    ["Z. Zamachowski", "Julie Delpy", "Janusz Gajos"],                  // WHITE
     ["Irène Jacob", "Jean-Louis Trintignant", "Jean-Pierre Lorit"]      // RED
 ];
 export const CHARACTERS = [
@@ -38,3 +43,6 @@ export const CHARACTERS = [
     ["Karol", "Dominique", "Mikolaj"],          // WHITE
     ["Valentine", "The Judge", "Auguste"]       //RED
 ];
+
+export const LETTERBOXD = [letterboxdBLUE, letterboxdWHITE, letterboxdRED];
+export const RATINGS = ["★★★★☆", "★★★★★", "★★★★⯪"]

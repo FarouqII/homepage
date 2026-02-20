@@ -1,7 +1,7 @@
 import './css/main.css';
 import { gsap } from "gsap";
 import logo from './assets/Three-Colours-logo-minimized.png';
-import { TITLES, BGcolors, FONTcolors, LIGHTcolors, DARKcolors, SYNOPSIS, CASTimg, CASTnames, CHARACTERS } from './constants';
+import { TITLES, BGcolors, FONTcolors, LIGHTcolors, DARKcolors, SYNOPSIS, CASTimg, CASTnames, CHARACTERS, LETTERBOXD, RATINGS } from './constants';
 
 import landerBlue from './assets/blue/blue-1.jpg';
 import landerWhite from './assets/white/white-1.jpg';
@@ -46,7 +46,7 @@ setInterval(() => {
         body.style.setProperty('--bg', BGcolors[index]);
         body.style.setProperty('--color', FONTcolors[index]);
     }
-}, 5000);
+}, 3000);
 
 const observer = new IntersectionObserver(
     ([entry]) => {
@@ -89,6 +89,10 @@ selectBtn.addEventListener("click", () => {
                 li.className = "selected";
             });
         })
+
+        document.getElementById('letterboxd').src = LETTERBOXD[prevIndex];
+        document.getElementById('stars').innerText = RATINGS[prevIndex];
+        document.getElementById('rating').href = `https://letterboxd.com/farouqii/film/three-colours-${TITLES[prevIndex].toLowerCase()}/`;
 
         index = -1;
     } else {
