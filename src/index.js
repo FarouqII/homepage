@@ -81,6 +81,9 @@ selectBtn.addEventListener("click", () => {
             document.getElementById(`character-${i}`).textContent = CHARACTERS[prevIndex][i - 1];
         }
 
+        listItems.forEach(li => li.className = "");
+        listItems[0].className = "selected";
+
         listItems.forEach(li => {
             li.addEventListener("click", () => {
                 const id = parseInt(li.id.split('-')[1]);
