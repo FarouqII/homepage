@@ -9,6 +9,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    pointer-events: none;
 }
 
 @font-face {
@@ -26,7 +27,10 @@
     src: url('../assets/fonts/Chandia_PERSONAL_USE_ONLY.otf');
 }
 
-button, a, li { cursor: pointer; }
+button, a, li {
+    cursor: pointer;
+    pointer-events: all;
+}
 span { cursor: inherit; }
 
 body,
@@ -88,6 +92,22 @@ section {
     height: 100%;
     object-fit: cover;
     flex-shrink: 0;
+}
+
+#slider-track > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#slider-track > div > h1 {
+    z-index: 10;
+    font-size: 5rem;
+    margin-top: -5vw;
+    font-family: "Chandia", sans-serif;
+
+    transition: color 0.8s ease-in-out;;
 }
 
 #blue {
@@ -443,14 +463,43 @@ section {
    SMALL MOBILE (≤ 480px)
    ========================================= */
 @media (max-width: 480px) {
+    #lander {
+        justify-content: center;
+        align-items: flex-start;
+        padding: 5vh;
+    }
+
+    #lander > .logo {
+        width: 100%;
+    }
+
+    .slider-img {
+        width: 80vw;
+        margin: 10vw;
+        border-radius: 2vw;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
 
     #details-content {
         flex-direction: column;
         justify-content: center;
+        height: auto;
+    }
+
+    #about-movie {
+        padding: 0;
+    }
+
+    #about-movie, #movie-cast {
+        width: auto;
+    }
+
+    #movie-title > .logo {
+        width: 70%;
     }
 
     #movie-title > h1 {
-        font-size: 3rem;
+        font-size: 3.5rem;
     }
 
     #plot {
@@ -462,8 +511,26 @@ section {
         font-size: 1.1rem;
     }
 
+    #movie-cast {
+        gap: 5vh;
+    }
+
+    #cast-img-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 120%;
+    }
+
     .cast-img {
         width: 95%;
     }
 
+    #cast > li {
+        padding: 0;
+    }
+
+    .actor-name {
+        font-size: inherit;
+    }
 }

@@ -6,13 +6,20 @@ import { TITLES, BGcolors, FONTcolors, LIGHTcolors, DARKcolors, SYNOPSIS, CASTim
 import landerBlue from './assets/blue/blue-1.jpg';
 import landerWhite from './assets/white/white-1.jpg';
 import landerRed from './assets/red/red-5.jpg';
+
+import landerBlueMOBILE from './assets/blue/blue-mobile.jpg';
+import landerWhiteMOBILE from './assets/white/white-mobile.jpg';
+import landerRedMOBILE from './assets/red/red-mobile.jpg';
+
+const isMobile = window.innerWidth <= 480;
+
 window.onload = () => {
     document.getElementById("lander").scrollIntoView({ behavior: "smooth" });
 }
 
-document.getElementById('blue').src = landerBlue;
-document.getElementById('white').src = landerWhite;
-document.getElementById('red').src = landerRed;
+document.getElementById('blue').src = isMobile ? landerBlueMOBILE : landerBlue;
+document.getElementById('white').src = isMobile ? landerWhiteMOBILE : landerWhite;
+document.getElementById('red').src = isMobile ? landerRedMOBILE : landerRed;
 
 const body = document.querySelector('body');
 const allLogos = document.querySelectorAll('.logo');
