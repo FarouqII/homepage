@@ -7,65 +7,80 @@
 </head>
 <body>
     <main>
-        <section id="lander">
+        
+        <!-- LANDER -->
+        <section id="lander" aria-labelledby="lander-heading">
+            <h1 id="lander-heading" class="visually-hidden">The Three Colours Trilogy</h1>
+
             <img class="logo" alt="The Three Colours Trilogy by Krzysztof Kieślowski">
 
-            <div id="lander-slider">
-                <div id="slider-track">
-                    <div>
-                        <img class="slider-img" id="blue">
+            <!-- SLIDER -->
+            <div id="lander-slider" role="region" aria-label="Movie selection slider">
+                <div id="slider-track" role="list">
+                    <div role="listitem">
+                        <img class="slider-img" id="blue" alt="Poster for the film Three Colours Blue">
                         <h1>Blue</h1>
                     </div>
-                    <div>
-                        <img class="slider-img" id="white">
+                    <div role="listitem">
+                        <img class="slider-img" id="white" alt="Poster for the film Three Colours White">
                         <h1>White</h1>
                     </div>
-                    <div>
-                        <img class="slider-img" id="red">
+                    <div role="listitem">
+                        <img class="slider-img" id="red" alt="Poster for the film Three Colours Red">
                         <h1>Red</h1>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="details">
-            <div id="button-container"><button type="button" id="select">Select Movie</button></div>
+        <!-- DETAILS -->
+        <section id="details" aria-labelledby="details-heading">
+            <h2 id="details-heading" class="visually-hidden">Movie details</h2>
+
+            <div id="button-container">
+                <button type="button" id="select" aria-controls="details-content" aria-label="Select currently displayed movie">Select Movie</button>
+            </div>
 
             <div id="details-content">
-                <div id="about-movie">
+
+                <!-- ABOUT MOVIE -->
+                <article id="about-movie">
                     <div id="movie-title">
-                        <img class="logo" alt="The Three Colours Trilogy by Krzysztof Kieślowski">
+                        <img class="logo" alt="The Three Colours Trilogy logo">
                         <h1>Blue</h1>
                     </div>
                     
                     <div id="plot">
-                        <p></p>
+                        <p aria-live="polite"></p>
                     </div>
-                </div>
+                </article>
 
-                <div id="movie-cast">
-                    <a id="rating" href="" target="_blank">
-                        <img id="letterboxd" src="">
-                        <h1 id="stars"></h1>
+                <!-- CAST -->
+                <div id="movie-cast" aria-labelledby="cast-heading">
+                    <h2 id="cast-heading" class="visually-hidden">Main cast</h2>
+
+                    <a id="rating" href="" target="_blank"rel="noopener noreferrer" aria-label="View movie rating on Letterboxd">
+                        <img id="letterboxd" src="" alt="Letterboxd logo">
+                        <h1 id="stars" aria-label="Movie rating"></h1>
                     </a>
 
-                    <div id="cast-img-container">
-                        <img class="cast-img" id="cast-1">
-                        <img class="cast-img" id="cast-2">
-                        <img class="cast-img" id="cast-3">
+                    <div id="cast-img-container" role="group" aria-label="Cast portraits">
+                        <img class="cast-img" id="cast-1" alt="Portrait of cast member">
+                        <img class="cast-img" id="cast-2" alt="Portrait of cast member">
+                        <img class="cast-img" id="cast-3" alt="Portrait of cast member">
                     </div>
 
-                    <ul id="cast">
+                    <ul id="cast" aria-label="Cast list">
                         <li id="li-1" class="selected">
-                            <a class="actor-name" id="actor-1"></a>
+                            <a class="actor-name" id="actor-1" href="#" aria-label="Actor name" tabindex="-1"></a>
                             <span class="character-name" id="character-1"></span>
                         </li>
                         <li id="li-2">
-                            <a class="actor-name" id="actor-2"></a>
+                            <a class="actor-name" id="actor-2" href="#" aria-label="Actor name" tabindex="-1"></a>
                             <span class="character-name" id="character-2"></span>
                         </li>
                         <li id="li-3">
-                            <a class="actor-name" id="actor-3"></a>
+                            <a class="actor-name" id="actor-3" href="#" aria-label="Actor name" tabindex="-1"></a>
                             <span class="character-name" id="character-3"></span>
                         </li>
                     </ul>

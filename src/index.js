@@ -82,6 +82,9 @@ selectBtn.addEventListener("click", () => {
         document.querySelector("#movie-title h1").textContent = TITLES[prevIndex];
         document.querySelector("#plot p").textContent = SYNOPSIS[prevIndex];
 
+        selectBtn.blur();
+        document.getElementById("rating").focus();
+
         document.getElementById('cast-1').src = CASTimg[prevIndex][0];
         for (let i = 1; i <= 3; i++) {
             document.getElementById(`actor-${i}`).textContent = CASTnames[prevIndex][i - 1];
@@ -110,6 +113,64 @@ selectBtn.addEventListener("click", () => {
         index = prevIndex;
     }
 });
+
+document.addEventListener("keydown", (e) => {
+    if (!isAtTop) return;
+
+    if (e.key === "ArrowRight") {
+        index = (index + 1) % slides.length;
+        updateSlide();
+    }
+
+    if (e.key === "ArrowLeft") {
+        index = (index - 1 + slides.length) % slides.length;
+        updateSlide();
+    }
+});
+
+let castIndex = 0;
+
+document.addEventListener("keydown", (e) => {
+
+    if (isAtTop) {
+
+        if (e.key === "ArrowRight") {
+            index = (index + 1) % slides.length;
+            updateSlide();
+        }
+
+        if (e.key === "ArrowLeft") {
+            index = (index - 1 + slides.length) % slides.length;
+            updateSlide();
+        }
+
+    } else {
+
+        if (e.key === "ArrowRight") {
+            castIndex = (castIndex + 1) % 3;
+            selectCast(castIndex);
+        }
+
+        if (e.key === "ArrowLeft") {
+            castIndex = (castIndex - 1 + 3) % 3;
+            selectCast(castIndex);
+        }
+
+    }
+});
+
+function updateSlide() {
+    showSlide(index);
+    document.body.style.setProperty('--bg', BGcolors[index]);
+    document.body.style.setProperty('--color', FONTcolors[index]);
+}
+
+function selectCast(i) {
+    document.getElementById("cast-1").src = CASTimg[prevIndex][i];
+
+    listItems.forEach(li => li.className = "");
+    listItems[i].className = "selected";
+}
 
 // --- Temporary Image Sources ---
 // for (let i = 1; i <= 3; i++) document.getElementById(`cast-${i}`).src = cast[i];
