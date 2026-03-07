@@ -13,8 +13,41 @@ import landerRedMOBILE from './assets/red/red-mobile.jpg';
 
 const isMobile = window.innerWidth <= 480;
 
+gsap.set(".slider-img", { opacity: 0, scale: 1.05 });
+gsap.set("#slider-track h1", { opacity: 0, y: 40 });
+gsap.set(".logo", { opacity: 0, scale: 0.95 });
+
+gsap.set("#movie-title h1", { opacity: 0, y: 40 });
+gsap.set("#plot", { opacity: 0 });
+gsap.set(".cast-img", { opacity: 0, scale: 0.95 });
+gsap.set("#cast li", { opacity: 0, y: 20 });
+gsap.set("#rating", { opacity: 0, y: 20 });
+
 window.onload = () => {
     document.getElementById("lander").scrollIntoView({ behavior: "smooth" });
+
+    const heroTL = gsap.timeline();
+
+    heroTL
+        .to(".slider-img", {
+            opacity: 1,
+            scale: 1,
+            duration: 1.2,
+            ease: "power2.out"
+        })
+        .to("#slider-track h1", {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            stagger: 0.15,
+            ease: "power3.out"
+        }, "-=0.6")
+        .to(".logo", {
+            opacity: 1,
+            scale: 1,
+            duration: 0.8,
+            ease: "power2.out"
+        }, "-=0.6");
 }
 
 document.getElementById('blue').src = isMobile ? landerBlueMOBILE : landerBlue;
@@ -53,7 +86,7 @@ setInterval(() => {
         body.style.setProperty('--bg', BGcolors[index]);
         body.style.setProperty('--color', FONTcolors[index]);
     }
-}, 3000);
+}, 4000);
 
 const observer = new IntersectionObserver(
     ([entry]) => {
@@ -70,20 +103,21 @@ const observer = new IntersectionObserver(
 
 observer.observe(lander);
 
-selectBtn.addEventListener("click", () => {
+selectBtn.addEventListener("click", e => {
+    e.preventDefault();
     if (isAtTop) {
         prevIndex = index;
 
         document.getElementById("details").scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => {
+            animateDetails();
+        }, 400);
         body.style.setProperty('--bg', BGcolors[prevIndex]);
         body.style.setProperty('--color', FONTcolors[prevIndex]);
         body.style.setProperty('--color-light', LIGHTcolors[prevIndex]);
         body.style.setProperty('--color-dark', DARKcolors[prevIndex]);
         document.querySelector("#movie-title h1").textContent = TITLES[prevIndex];
         document.querySelector("#plot p").textContent = SYNOPSIS[prevIndex];
-
-        selectBtn.blur();
-        document.getElementById("rating").focus();
 
         document.getElementById('cast-1').src = CASTimg[prevIndex][0];
         for (let i = 1; i <= 3; i++) {
@@ -95,9 +129,10 @@ selectBtn.addEventListener("click", () => {
         listItems[0].className = "selected";
 
         listItems.forEach(li => {
-            li.addEventListener("click", () => {
+            li.addEventListener("click", e => {
+                e.preventDefault();
                 const id = parseInt(li.id.split('-')[1]);
-                document.getElementById(`cast-1`).src = CASTimg[prevIndex][id - 1];
+                animateCastChange(CASTimg[prevIndex][id - 1]);
                 listItems.forEach(li => li.className = "");
                 li.className = "selected";
             });
@@ -111,20 +146,6 @@ selectBtn.addEventListener("click", () => {
     } else {
         lander.scrollIntoView({ behavior: "smooth" });
         index = prevIndex;
-    }
-});
-
-document.addEventListener("keydown", (e) => {
-    if (!isAtTop) return;
-
-    if (e.key === "ArrowRight") {
-        index = (index + 1) % slides.length;
-        updateSlide();
-    }
-
-    if (e.key === "ArrowLeft") {
-        index = (index - 1 + slides.length) % slides.length;
-        updateSlide();
     }
 });
 
@@ -172,15 +193,60 @@ function selectCast(i) {
     listItems[i].className = "selected";
 }
 
-// --- Temporary Image Sources ---
-// for (let i = 1; i <= 3; i++) document.getElementById(`cast-${i}`).src = cast[i];
+function animateDetails() {
+    const detailsTL = gsap.timeline();
 
-document.getElementById('actor-1').textContent = "Juliette Binoche";
-document.getElementById('actor-2').textContent = "Benoît Régent";
-document.getElementById('actor-3').textContent = "Florence Pernel";
+    detailsTL
+        .to("#movie-title h1", {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power3.out"
+        })
+        .to("#plot", {
+            opacity: 1,
+            duration: 0.8
+        }, "-=0.4")
+        .to(".cast-img", {
+            opacity: 1,
+            scale: 1,
+            duration: 0.8,
+            ease: "power2.out"
+        }, "-=0.4")
+        .to("#cast li", {
+            opacity: 1,
+            y: 0,
+            stagger: 0.15,
+            duration: 0.6,
+            ease: "power2.out"
+        }, "-=0.4")
+        .to("#rating", {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power2.out"
+        }, "-=0.4");
+}
 
-document.getElementById('character-1').textContent = "Julie";
-document.getElementById('character-2').textContent = "Olivier";
-document.getElementById('character-3').textContent = "Sandrine";
+function animateCastChange(newSrc) {
+    const castImg = document.getElementById("cast-1");
+
+    gsap.timeline()
+        .to(castImg, {
+            opacity: 0,
+            y: 10,
+            duration: 0.25,
+            ease: "power2.in",
+            onComplete: () => {
+                castImg.src = newSrc;
+            }
+        })
+        .to(castImg, {
+            opacity: 1,
+            y: 0,
+            duration: 0.35,
+            ease: "power2.out"
+        });
+}
 
 document.getElementById('cast-1').style.display = "block";
